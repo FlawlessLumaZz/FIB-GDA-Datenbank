@@ -119,7 +119,7 @@
         const weapons = {'Kurzwaffen': 'Waffen in Herstellung: 0', 'Langwaffen': 'Waffen in Herstellung: 0'};
 
         function startCooldown(route) {
-            const cooldownTime = 3 * 24 * 60 * 60 * 1000;
+            const cooldownTime = 2 * 24 * 60 * 60 * 1000;
             localStorage.setItem(`cooldown_${route}`, Date.now() + cooldownTime);
             updateCooldown(route);
             updateButton(route, false);
