@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+    const firebaseConfig = {
+  apiKey: "AIzaSyCbsn5hDh-1WP4U9ytPflGLLp3KfkLW9Rg",
+  authDomain: "gda-datenbank.firebaseapp.com",
+  projectId: "gda-datenbank",
+  storageBucket: "gda-datenbank.firebasestorage.app",
+  messagingSenderId: "1001029749843",
+  appId: "1:1001029749843:web:c88d3b1a70d286ea5e0aa6",
+  measurementId: "G-2NC8959FQE"
+
+};
+
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, user => {
+      if (!user) window.location.href = "index.html";
+    });
+  </script>
+</head>
+<body>
+  <h1>Willkommen im geheimen Bereich!</h1>
+</body>
+</html>
