@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Startseite - GDA Datenbank</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0d1117;
+      color: #e6edf3;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+
+    header {
+      background: linear-gradient(90deg, #1f2937, #374151);
+      padding: 25px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .nav-bar {
+      background-color: #161b22;
+      padding: 15px 0;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #58a6ff;
+      text-decoration: none;
+      padding: 12px 18px;
+      font-size: 18px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: #1f6feb;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .content {
+      padding: 60px 20px;
+    }
+
+    .content h2 {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .content p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    footer {
+      background-color: #161b22;
+      padding: 20px;
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #58a6ff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #1f6feb;
+    }
+
+    .logo-container img {
+      max-width: 50%;
+      height: auto;
+      opacity: 0.1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+  </style>
+
+  <!-- Firebase Auth Schutz -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCbsn5hDh-1WP4U9ytPflGLLp3KfkLW9Rg",
+      authDomain: "gda-datenbank.firebaseapp.com",
+      projectId: "gda-datenbank",
+      storageBucket: "gda-datenbank.appspot.com",
+      messagingSenderId: "1001029749843",
+      appId: "1:1001029749843:web:c88d3b1a70d286ea5e0aa6",
+      measurementId: "G-2NC8959FQE"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, user => {
+      if (!user) {
+        window.location.href = "index.html"; // zurück zum Login, wenn nicht eingeloggt
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>GDA Datenbank - Offizielle FIB Webseite</h1>
+  </header>
+
+  <div class="nav-bar">
+    <div class="nav-links">
+      <a href="startseite.html">Startseite</a>
+      <a href="fraktionen.html">Fraktionen</a>
+      <a href="razzien.html">Razzien & Cooldowns</a>
+      <a href="routenstandorte.html">Routenstandorte</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Willkommen in der offiziellen GDA Datenbank</h2>
+    <p>Hier findest du alle relevanten Informationen zu Fraktionen, Razzien und mehr.</p>
+    <p style="margin-top: 30px;">Erstellt von FIB-11</p>
+  </div>
+
+  <div class="logo-container">
+    <img src="grafik.png" alt="FIB Logo">
+  </div>
+
+  <footer>
+    <p>© 2025 GDA Datenbank | Kontakt: <a href="mailto:FIB-11@narcocity.com">FIB-11@narcocity.com</a></p>
+  </footer>
+</body>
+</html>
