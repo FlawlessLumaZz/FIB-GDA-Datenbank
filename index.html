@@ -4,17 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GDA Datenbank - FIB</title>
-
-  <!-- Blockiere Darstellung sofort -->
-  <style>
-    html.loading body {
-      display: none !important;
-    }
-  </style>
-  <script>
-    document.documentElement.classList.add("loading");
-  </script>
-
   <link rel="stylesheet" href="style.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -33,13 +22,6 @@
       display: none;
     }
 
-    body.ready header,
-    body.ready .nav-bar,
-    body.ready .content,
-    body.ready footer {
-      display: block;
-    }
-
     .login-box {
       background-color: #161b22;
       max-width: 400px;
@@ -47,7 +29,6 @@
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-      display: none;
     }
 
     .login-box h2 {
@@ -113,9 +94,7 @@
       const loginBox = document.querySelector(".login-box");
 
       auth.onAuthStateChanged(user => {
-        // Sichtbarkeit aktivieren
-        document.documentElement.classList.remove("loading");
-        document.body.classList.add("ready");
+        document.body.style.display = "block"; // Seite wird sichtbar
 
         if (user) {
           // Eingeloggt
@@ -144,7 +123,7 @@
   </script>
 </head>
 
-<body>
+<body style="display: none;">
   <header>
     <h1>GDA Datenbank - Offizielle FIB Webseite</h1>
   </header>
@@ -161,13 +140,13 @@
   <div class="content">
     <h2>Willkommen in der offiziellen GDA Datenbank</h2>
     <p>Hier findest du alle relevanten Informationen zu Fraktionen, Razzien und mehr.</p>
-
     <div class="logo-container">
       <img src="grafik.png" alt="Erstellt von FIB-11" style="max-width: 50%; height: auto;">
     </div>
+    <p>Erstellt von FIB-11</p>
   </div>
 
-  <div class="login-box">
+  <div class="login-box" style="display: none;">
     <h2>Login</h2>
     <input type="email" id="email" placeholder="E-Mail">
     <input type="password" id="password" placeholder="Passwort">
