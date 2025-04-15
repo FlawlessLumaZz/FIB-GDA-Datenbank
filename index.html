@@ -1,226 +1,226 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDA Datenbank - FIB</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #0d1117;
-            color: #e6edf3;
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GDA Datenbank - FIB</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0d1117;
+      color: #e6edf3;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-        header {
-            background: linear-gradient(90deg, #1f2937, #374151);
-            padding: 25px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-        }
+    header {
+      background: linear-gradient(90deg, #1f2937, #374151);
+      padding: 25px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 32px;
-            font-weight: bold;
-        }
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: bold;
+    }
 
-        .nav-bar {
-            background-color: #161b22;
-            padding: 15px 0;
-        }
+    .nav-bar {
+      background-color: #161b22;
+      padding: 15px 0;
+    }
 
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-        }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
 
-        .nav-links a {
-            color: #58a6ff;
-            text-decoration: none;
-            padding: 12px 18px;
-            font-size: 18px;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
+    .nav-links a {
+      color: #58a6ff;
+      text-decoration: none;
+      padding: 12px 18px;
+      font-size: 18px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
 
-        .nav-links a:hover {
-            background: #1f6feb;
-            color: white;
-            transform: scale(1.1);
-        }
+    .nav-links a:hover {
+      background: #1f6feb;
+      color: white;
+      transform: scale(1.1);
+    }
 
-        .content {
-            padding: 60px 20px;
-        }
+    .content {
+      padding: 60px 20px;
+    }
 
-        .content h2 {
-            font-size: 28px;
-            font-weight: bold;
-        }
+    .content h2 {
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-        .content p {
-            font-size: 18px;
-            opacity: 0.9;
-        }
+    .content p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
 
-        .logo-container {
-            margin-top: 30px;
-        }
+    .logo-container {
+      margin-top: 30px;
+    }
 
-        .logo-container img {
-            max-width: 50%;
-            height: auto;
-            opacity: 0.9;
-            transition: opacity 0.3s, transform 0.3s;
-        }
+    .logo-container img {
+      max-width: 50%;
+      height: auto;
+      opacity: 0.9;
+      transition: opacity 0.3s, transform 0.3s;
+    }
 
-        .logo-container img:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
+    .logo-container img:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
 
-        footer {
-            background-color: #161b22;
-            padding: 20px;
-            font-size: 16px;
-            font-weight: 500;
-            margin-top: 40px;
-        }
+    footer {
+      background-color: #161b22;
+      padding: 20px;
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 40px;
+    }
 
-        footer a {
-            color: #58a6ff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    footer a {
+      color: #58a6ff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-        footer a:hover {
-            color: #1f6feb;
-        }
+    footer a:hover {
+      color: #1f6feb;
+    }
 
-        /* Login */
-        .login-box {
-            background-color: #161b22;
-            max-width: 400px;
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
+    /* Login */
+    .login-box {
+      background-color: #161b22;
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
 
-        .login-box h2 {
-            margin-bottom: 20px;
-        }
+    .login-box h2 {
+      margin-bottom: 20px;
+    }
 
-        .login-box input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #30363d;
-            background-color: #0d1117;
-            color: white;
-            border-radius: 8px;
-        }
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #30363d;
+      background-color: #0d1117;
+      color: white;
+      border-radius: 8px;
+    }
 
-        .login-box button {
-            width: 100%;
-            padding: 12px;
-            background-color: #1f6feb;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #1f6feb;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
 
-        .login-box button:hover {
-            background-color: #58a6ff;
-        }
+    .login-box button:hover {
+      background-color: #58a6ff;
+    }
 
-        .status {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #f87171;
-        }
-    </style>
+    .status {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #f87171;
+    }
+  </style>
 
-   <!-- Firebase App (modular) CDN -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <!-- Firebase Kompatibilitätsmodus -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyCbsn5hDh-1WP4U9ytPflGLLp3KfkLW9Rg",
-    authDomain: "gda-datenbank.firebaseapp.com",
-    projectId: "gda-datenbank",
-    storageBucket: "gda-datenbank.firebasestorage.app",
-    messagingSenderId: "1001029749843",
-    appId: "1:1001029749843:web:c88d3b1a70d286ea5e0aa6",
-    measurementId: "G-2NC8959FQE"
-  };
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCbsn5hDh-1WP4U9ytPflGLLp3KfkLW9Rg",
+      authDomain: "gda-datenbank.firebaseapp.com",
+      projectId: "gda-datenbank",
+      storageBucket: "gda-datenbank.appspot.com",
+      messagingSenderId: "1001029749843",
+      appId: "1:1001029749843:web:c88d3b1a70d286ea5e0aa6",
+      measurementId: "G-2NC8959FQE"
+    };
 
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-  function login() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const status = document.getElementById("status");
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const status = document.getElementById("status");
 
-    auth.signInWithEmailAndPassword(email, password)
-      .then(() => {
-        window.location.href = "dashboard.html";
-      })
-      .catch(error => {
-        status.innerText = "Fehler: " + error.message;
-      });
-  }
-</script>
-
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          window.location.href = "dashboard.html";
+        })
+        .catch(error => {
+          status.innerText = "Fehler: " + error.message;
+        });
+    }
+  </script>
 </head>
 
 <body>
-    <header>
-        <h1>GDA Datenbank - Offizielle FIB Webseite</h1>
-    </header>
+  <header>
+    <h1>GDA Datenbank - Offizielle FIB Webseite</h1>
+  </header>
 
-    <div class="nav-bar">
-        <div class="nav-links">
-            <a href="startseite.html">Startseite</a>
-            <a href="fraktionen.html">Fraktionen</a>
-            <a href="razzien.html">Razzien & Cooldowns</a>
-            <a href="routenstandorte.html">Routenstandorte</a>
-        </div>
+  <div class="nav-bar">
+    <div class="nav-links">
+      <a href="startseite.html">Startseite</a>
+      <a href="fraktionen.html">Fraktionen</a>
+      <a href="razzien.html">Razzien & Cooldowns</a>
+      <a href="routenstandorte.html">Routenstandorte</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Willkommen in der offiziellen GDA Datenbank</h2>
+    <p>Bitte melde dich mit deinem FIB-Account an:</p>
+
+    <div class="login-box">
+      <h2>Login</h2>
+      <input type="email" id="email" placeholder="E-Mail">
+      <input type="password" id="password" placeholder="Passwort">
+      <button onclick="login()">Einloggen</button>
+      <div id="status" class="status"></div>
     </div>
 
-    <div class="content">
-        <h2>Willkommen in der offiziellen GDA Datenbank</h2>
-        <p>Bitte melde dich mit deinem FIB-Account an:</p>
-
-        <div class="login-box">
-            <h2>Login</h2>
-            <input type="email" id="email" placeholder="E-Mail">
-            <input type="password" id="password" placeholder="Passwort">
-            <button onclick="login()">Einloggen</button>
-            <div id="status" class="status"></div>
-        </div>
-
-        <div class="logo-container">
-            <img src="grafik.png" alt="Erstellt von FIB-11">
-        </div>
+    <div class="logo-container">
+      <img src="grafik.png" alt="Erstellt von FIB-11">
     </div>
+  </div>
 
-    <footer>
-        <p>© 2025 GDA Datenbank | Kontakt: <a href="mailto:FIB-11@narcocity.com">FIB-11@narcocity.com</a></p>
-    </footer>
+  <footer>
+    <p>© 2025 GDA Datenbank | Kontakt: <a href="mailto:FIB-11@narcocity.com">FIB-11@narcocity.com</a></p>
+  </footer>
 </body>
 </html>
+
 
