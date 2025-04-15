@@ -9,6 +9,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
     body {
+      display: none; /* Unsichtbar, bis Firebase geprüft hat */
       margin: 0;
       padding: 0;
       background-color: #0d1117;
@@ -16,7 +17,10 @@
       font-family: 'Poppins', sans-serif;
       text-align: center;
       overflow-x: hidden;
-      display: none; /* <- BODY wird erst sichtbar, wenn Auth geprüft wurde */
+    }
+
+    body.app-ready {
+      display: block; /* Wird erst durch JS gesetzt */
     }
 
     header, .nav-bar, .content, footer {
@@ -99,7 +103,7 @@
       const loginBox = document.querySelector(".login-box");
 
       auth.onAuthStateChanged(user => {
-        document.body.style.display = "block"; // Erst jetzt sichtbar!
+        document.body.classList.add("app-ready"); // Jetzt anzeigen
 
         if (user) {
           // Eingeloggt
