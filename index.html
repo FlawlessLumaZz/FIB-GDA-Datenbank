@@ -16,28 +16,30 @@
             text-align: center;
             overflow-x: hidden;
         }
+
         header {
             background: linear-gradient(90deg, #1f2937, #374151);
             padding: 25px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1s ease-out;
         }
+
         header h1 {
             margin: 0;
             font-size: 32px;
             font-weight: bold;
         }
+
         .nav-bar {
             background-color: #161b22;
             padding: 15px 0;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-            animation: fadeInDown 1s ease-out 0.5s;
         }
+
         .nav-links {
             display: flex;
             justify-content: center;
             gap: 25px;
         }
+
         .nav-links a {
             color: #58a6ff;
             text-decoration: none;
@@ -48,71 +50,147 @@
             border-radius: 8px;
             transition: all 0.3s;
         }
+
         .nav-links a:hover {
             background: #1f6feb;
             color: white;
             transform: scale(1.1);
         }
+
         .content {
             padding: 60px 20px;
-            animation: fadeIn 1.5s ease-out 1s;
         }
+
         .content h2 {
             font-size: 28px;
             font-weight: bold;
         }
+
         .content p {
             font-size: 18px;
             opacity: 0.9;
         }
+
         .logo-container {
             margin-top: 30px;
         }
+
         .logo-container img {
             max-width: 50%;
             height: auto;
             opacity: 0.9;
             transition: opacity 0.3s, transform 0.3s;
         }
+
         .logo-container img:hover {
             opacity: 1;
             transform: scale(1.1);
         }
+
         footer {
             background-color: #161b22;
             padding: 20px;
             font-size: 16px;
             font-weight: 500;
             margin-top: 40px;
-            box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out 1.5s;
         }
+
         footer a {
             color: #58a6ff;
             text-decoration: none;
             transition: color 0.3s;
         }
+
         footer a:hover {
             color: #1f6feb;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        /* Login */
+        .login-box {
+            background-color: #161b22;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .login-box h2 {
+            margin-bottom: 20px;
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #30363d;
+            background-color: #0d1117;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1f6feb;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .login-box button:hover {
+            background-color: #58a6ff;
+        }
+
+        .status {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #f87171;
         }
     </style>
+
+    <!-- Firebase Config + Login Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+       const firebaseConfig = {
+  apiKey: "AIzaSyCbsn5hDh-1WP4U9ytPflGLLp3KfkLW9Rg",
+  authDomain: "gda-datenbank.firebaseapp.com",
+  projectId: "gda-datenbank",
+  storageBucket: "gda-datenbank.firebasestorage.app",
+  messagingSenderId: "1001029749843",
+  appId: "1:1001029749843:web:c88d3b1a70d286ea5e0aa6",
+  measurementId: "G-2NC8959FQE"
+
+};
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        window.login = () => {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const status = document.getElementById("status");
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    window.location.href = "dashboard.html";
+                })
+                .catch((error) => {
+                    status.innerText = "Fehler: " + error.message;
+                });
+        };
+    </script>
 </head>
+
 <body>
     <header>
         <h1>GDA Datenbank - Offizielle FIB Webseite</h1>
     </header>
+
     <div class="nav-bar">
         <div class="nav-links">
             <a href="startseite.html">Startseite</a>
@@ -121,15 +199,27 @@
             <a href="routenstandorte.html">Routenstandorte</a>
         </div>
     </div>
+
     <div class="content">
         <h2>Willkommen in der offiziellen GDA Datenbank</h2>
-        <p>Hier findest du alle relevanten Informationen zu Fraktionen, Razzien und mehr.</p>
+        <p>Bitte melde dich mit deinem FIB-Account an:</p>
+
+        <div class="login-box">
+            <h2>Login</h2>
+            <input type="email" id="email" placeholder="E-Mail">
+            <input type="password" id="password" placeholder="Passwort">
+            <button onclick="login()">Einloggen</button>
+            <div id="status" class="status"></div>
+        </div>
+
         <div class="logo-container">
             <img src="grafik.png" alt="Erstellt von FIB-11">
         </div>
     </div>
+
     <footer>
         <p>© 2025 GDA Datenbank | Kontakt: <a href="mailto:FIB-11@narcocity.com">FIB-11@narcocity.com</a></p>
     </footer>
 </body>
 </html>
+
