@@ -4,12 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GDA Datenbank - FIB</title>
+
+  <!-- Blockiere Darstellung sofort -->
+  <style>
+    html.loading body {
+      display: none !important;
+    }
+  </style>
+  <script>
+    document.documentElement.classList.add("loading");
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
     body {
-      display: none; /* Unsichtbar, bis Firebase geprüft hat */
       margin: 0;
       padding: 0;
       background-color: #0d1117;
@@ -19,16 +29,15 @@
       overflow-x: hidden;
     }
 
-    body.app-ready {
-      display: block; /* Wird erst durch JS gesetzt */
-    }
-
     header, .nav-bar, .content, footer {
       display: none;
     }
 
-    .visible {
-      display: block !important;
+    body.ready header,
+    body.ready .nav-bar,
+    body.ready .content,
+    body.ready footer {
+      display: block;
     }
 
     .login-box {
@@ -38,6 +47,7 @@
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      display: none;
     }
 
     .login-box h2 {
@@ -103,14 +113,16 @@
       const loginBox = document.querySelector(".login-box");
 
       auth.onAuthStateChanged(user => {
-        document.body.classList.add("app-ready"); // Jetzt anzeigen
+        // Sichtbarkeit aktivieren
+        document.documentElement.classList.remove("loading");
+        document.body.classList.add("ready");
 
         if (user) {
           // Eingeloggt
-          header.classList.add("visible");
-          nav.classList.add("visible");
-          content.classList.add("visible");
-          footer.classList.add("visible");
+          header.style.display = "block";
+          nav.style.display = "block";
+          content.style.display = "block";
+          footer.style.display = "block";
           loginBox.style.display = "none";
         } else {
           // Nicht eingeloggt
@@ -155,7 +167,7 @@
     </div>
   </div>
 
-  <div class="login-box" style="display: none;">
+  <div class="login-box">
     <h2>Login</h2>
     <input type="email" id="email" placeholder="E-Mail">
     <input type="password" id="password" placeholder="Passwort">
@@ -168,3 +180,4 @@
   </footer>
 </body>
 </html>
+
