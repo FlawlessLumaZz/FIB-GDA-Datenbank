@@ -16,7 +16,7 @@
       font-family: 'Poppins', sans-serif;
       text-align: center;
       overflow-x: hidden;
-      display: none; /* <- BODY wird erst sichtbar wenn Firebase fertig ist */
+      display: none; /* <- BODY wird erst sichtbar, wenn Auth geprüft wurde */
     }
 
     header, .nav-bar, .content, footer {
@@ -71,8 +71,6 @@
       font-size: 14px;
       color: #f87171;
     }
-
-    /* Deine bestehenden Styles bleiben alle erhalten */
   </style>
 
   <!-- Firebase -->
@@ -100,9 +98,9 @@
       const footer = document.querySelector("footer");
       const loginBox = document.querySelector(".login-box");
 
-      document.body.style.display = "block"; // Jetzt sichtbar
-
       auth.onAuthStateChanged(user => {
+        document.body.style.display = "block"; // Erst jetzt sichtbar!
+
         if (user) {
           // Eingeloggt
           header.classList.add("visible");
@@ -166,5 +164,3 @@
   </footer>
 </body>
 </html>
-
-
