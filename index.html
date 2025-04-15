@@ -152,38 +152,39 @@
         }
     </style>
 
-    <!-- Firebase Config + Login Script -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+   <!-- Firebase App (modular) CDN -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 
-       const firebaseConfig = {
-  apiKey: "AIzaSyCbsn5hDh-1WP4U9ytPflGLLp3KfkLW9Rg",
-  authDomain: "gda-datenbank.firebaseapp.com",
-  projectId: "gda-datenbank",
-  storageBucket: "gda-datenbank.firebasestorage.app",
-  messagingSenderId: "1001029749843",
-  appId: "1:1001029749843:web:c88d3b1a70d286ea5e0aa6",
-  measurementId: "G-2NC8959FQE"
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCbsn5hDh-1WP4U9ytPflGLLp3KfkLW9Rg",
+    authDomain: "gda-datenbank.firebaseapp.com",
+    projectId: "gda-datenbank",
+    storageBucket: "gda-datenbank.firebasestorage.app",
+    messagingSenderId: "1001029749843",
+    appId: "1:1001029749843:web:c88d3b1a70d286ea5e0aa6",
+    measurementId: "G-2NC8959FQE"
+  };
 
-};
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
-        window.login = () => {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const status = document.getElementById("status");
+  function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const status = document.getElementById("status");
 
-            signInWithEmailAndPassword(auth, email, password)
-                .then(() => {
-                    window.location.href = "dashboard.html";
-                })
-                .catch((error) => {
-                    status.innerText = "Fehler: " + error.message;
-                });
-        };
-    </script>
+    auth.signInWithEmailAndPassword(email, password)
+      .then(() => {
+        window.location.href = "dashboard.html";
+      })
+      .catch(error => {
+        status.innerText = "Fehler: " + error.message;
+      });
+  }
+</script>
+
 </head>
 
 <body>
